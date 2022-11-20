@@ -9,7 +9,6 @@ const express = require("express");
 const workoutRoutes = require("./routes/workout");
 const mongoose = require("mongoose");
 
-
 // Declare
 const app = express();
 

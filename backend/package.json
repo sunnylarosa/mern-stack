@@ -13,10 +13,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-<<<<<<< HEAD
     "mongoose": "^6.7.2",
-=======
->>>>>>> 52a24985024ab9844af9b872a8ff8c491cca3755
     "msnodesqlv8": "^2.7.0",
     "mssql": "^9.0.1"
   }
