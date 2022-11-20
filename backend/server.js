@@ -9,6 +9,8 @@ const express = require("express");
 const workoutRoutes = require("./routes/workout");
 const sql = require("mssql/msnodesqlv8");
 
+const mongoose = require("mongoose");
+
 // Declare
 const app = express();
 
@@ -24,35 +26,45 @@ app.use((req, res, next) => {
 app.use("/api/workouts", workoutRoutes);
 
 // Connect to db
-const sqlConfig = {
-  database: "SASKI_Dev",
-  server: "DESKTOP-L4KGN47",
-  driver: "msnodesqlv8",
-  options: {
-    trustedConnection: true,
-  },
-};
+// const sqlConfig = {
+//   database: "SASKI_Dev",
+//   server: "DESKTOP-L4KGN47",
+//   driver: "msnodesqlv8",
+//   options: {
+//     trustedConnection: true,
+//   },
+// };
 
-sql
-  .connect(sqlConfig)
+// sql
+//   .connect(sqlConfig)
+//   .then(() => {
+//     console.log("DB connect successfully");
+
+//     try {
+//       // const result =
+//       //   await sql.query`select * from [user] where UserID = 'user001'`;
+//       // console.dir(result);
+
+//       // Listen for requests
+//       app.listen(process.env.PORT, () => {
+//         console.log(`Running on port ${process.env.PORT}`);
+//       });
+//     } catch (e) {
+//       console.log(e.message);
+//     }
+//   })
+//   .catch((err) => console.log(`Failed to connect with error: ${err}`));
+
+// Connect to db (MongoDB)
+mongoose
+  .connect(process.env.MONG_URI)
   .then(() => {
-    console.log("DB connect successfully");
-
-    try {
-      // const result =
-      //   await sql.query`select * from [user] where UserID = 'user001'`;
-      // console.dir(result);
-
-      app.listen(process.env.PORT, () => {
-        console.log(`Running on port ${process.env.PORT}`);
-      });
-    } catch (e) {
-      console.log(e.message);
-    }
+    console.log("DB connected successfully");
+    // Listen for requests
+    app.listen(process.env.PORT, () => {
+      console.log(`Running on port ${process.env.PORT}`);
+    });
   })
-  .catch((err) => console.log(`Failed to connect with error: ${err}`));
-
-// Listen for requests
-// app.listen(process.env.PORT, () => {
-//   console.log(`Running on port ${process.env.PORT}`);
-// });
+  .catch((error) => {
+    console.log(error);
+  });
