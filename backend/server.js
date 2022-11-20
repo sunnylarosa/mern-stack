@@ -6,7 +6,7 @@ require("dotenv").config();
 
 // Import
 const express = require("express");
-const workoutRoutes = require("./routes/workout");
+const workoutRoutes = require("./routes/workouts");
 const mongoose = require("mongoose");
 
 // Declare
