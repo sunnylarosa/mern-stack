@@ -8,8 +8,11 @@ require("dotenv").config();
 const express = require("express");
 const workoutRoutes = require("./routes/workout");
 const sql = require("mssql/msnodesqlv8");
+<<<<<<< HEAD
 
 const mongoose = require("mongoose");
+=======
+>>>>>>> 52a24985024ab9844af9b872a8ff8c491cca3755
 
 // Declare
 const app = express();
