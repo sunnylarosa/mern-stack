@@ -21,14 +21,10 @@ router.get("/:id", getWorkoutSingle);
 router.post("/", createWorkout);
 
 // DELETE a workout
-router.delete("/:id", (req, res) => {
-  res.json({ message: "DELETE a new workout" });
-});
+router.delete("/:id", deleteWorkout);
 
 // UPDATE a workout
-router.patch("/:id", (req, res) => {
-  res.json({ message: "UPDATE a new workout" });
-});
+router.patch("/:id", updateWorkout);
 
 // Export the router
 module.exports = router;
