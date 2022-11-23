@@ -53,7 +53,7 @@ const createWorkout = async (req, res) => {
 
 // DELETE a workout
 const deleteWorkout = async (req, res) => {
-  const { id } = rea.params;
+  const { id } = req.params;
 
   // Check if the { id } is a valid ID
   if (!mongoose.Types.ObjectId.isValid(id)) {
