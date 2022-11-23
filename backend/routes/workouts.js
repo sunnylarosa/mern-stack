@@ -4,6 +4,8 @@ const {
   getWorkout,
   getWorkoutSingle,
   createWorkout,
+  deleteWorkout,
+  updateWorkout,
 } = require("../controllers/workoutController");
 
 // Declare the instance of route so it can be used in this file
