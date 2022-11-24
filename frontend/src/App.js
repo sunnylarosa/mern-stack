@@ -13,6 +13,7 @@ function App() {
     <div className="App">
       {/* BrowserRouter going to surrounds everything that ever needss to use the routing system */}
       <BrowserRouter>
+        <Navbar />
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
