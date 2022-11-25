@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     // We try to fetch the workouts from the API on the backend and store it in response.
     const fetchWorkouts = async () => {
-      const response = await fetch("http://localhost:4000/api/workouts");
+      const response = await fetch("/api/workouts");
 
       // Parse the response variable to JavaScript object so it can be passed into something we can work with. And now we have an array of object (workout object) stored in json variable.
       const json = await response.json();
