@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 // Import components
 import WorkoutDetails from "../components/WorkoutDetails";
+import WorkoutForm from "../components/WorkoutForm";
 
 // React component for Home page
 const Home = () => {
