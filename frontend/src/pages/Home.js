@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+// Import components
+import WorkoutDetails from "../components/WorkoutDetails";
+
 // React component for Home page
 const Home = () => {
   // Declare local state (will be use in (response.ok))
@@ -36,7 +39,10 @@ const Home = () => {
       <div className="workouts">
         {/* Check if the workouts is not empty. If it's not empty then map the workouts*/}
         {workouts &&
-          workouts.map((workout) => <p key={workout._id}>{workout.title}</p>)}
+          workouts.map((workout) => (
+            // We're using WorkoutDetails to display the detail of each workout. We're also passing the whole workout as a property in the actual WorkoutDetails.
+            <WorkoutDetails key={workout._id} workout={workout} />
+          ))}
       </div>
     </div>
   );
