@@ -53,33 +53,33 @@ const WorkoutForm = () => {
     <form class="create" onSubmit={handleSubmit}>
       <h3>Add a New Workout</h3>
       {/* Title field */}
-      <label
+      <label>Exercise Title:</label>
+      <input
         type="text"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-      >
-        Exercise Title:
-      </label>
+      />
 
       {/* Load field */}
-      <label
+      <label>Load (in Kg):</label>
+      <input
         type="number"
         onChange={(e) => setLoad(e.target.value)}
         value={load}
-      >
-        Load (in Kg):
-      </label>
+      />
 
       {/* Reps field */}
-      <label
+      <label>Reps:</label>
+      <input
         type="number"
         onChange={(e) => setReps(e.target.value)}
         value={reps}
-      >
-        Reps:
-      </label>
+      />
 
       <button>Add Workout</button>
+
+      {/* Output the message error ('error' state) so we can see here if there is an error */}
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };
