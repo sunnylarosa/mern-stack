@@ -1,13 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // Import components
 import WorkoutDetails from "../components/WorkoutDetails";
 import WorkoutForm from "../components/WorkoutForm";
 
+// Import contexts
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
 // React component for Home page
 const Home = () => {
-  // Declare local state (will be use in (response.ok))
-  const [workouts, setWorkouts] = useState(null);
+  // We no longer need useState because it can only be used locally. We're changing it to useContext that available globally.
+  //  - The 'workouts' is null to begin with (refer to the 'state' in WorkoutsContext)
+  const { workouts, dispatch } = useWorkoutsContext();
 
   /* useEffect hook will fires a function and it's going to fire the function when the component is rendered.
      Now we only want to fire it once when it first rendered. We don't want to go out and try to fetch it multiple times everytime the component is rendered.
@@ -24,9 +28,9 @@ const Home = () => {
 
       // Check if the response is okay or not with ok property
       if (response.ok) {
-        // In here, we're going to update some local states. First create that local above (the setWorkouts)
-        // After that, this function (setWorkouts) will update the "workouts" variable in useState.
-        setWorkouts(json);
+        // We don't need to update with local state. Instead of, we're using dispatch() function from the invoked useWorkoutsContext
+        // We're sending the payload that contains the 'json' data from the server.
+        dispatch({ type: "SET_WORKOUTS", payload: json });
       }
     };
 

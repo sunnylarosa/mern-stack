@@ -12,12 +12,13 @@ import { createContext, useReducer } from "react";
 export const WorkoutsContext = createContext();
 
 // Create workoutsReducer function that will invoke when the dispath() function called.
-//   - First argument (state), indicate the previous state before we're making any changes.
+//   - First argument (state), indicate the previous state before we're making any changes. It is the workouts object.
 //   - Second argument (action), indicate the objetc that we passed into the dispatch() function.
 export const workoutsReducer = (state, action) => {
   // Check the action type
   switch (action.type) {
     case "SET_WORKOUTS":
+      // Update the entire array of workouts
       return { workouts: action.payload };
     case "CREATE_WORKOUTS":
       return { workouts: [action.payload, ...state.workouts] };
