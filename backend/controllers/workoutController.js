@@ -38,6 +38,28 @@ const createWorkout = async (req, res) => {
   // Grab the properties from request body
   const { title, reps, load } = req.body;
 
+  // Check if the field is empty
+  let emptyFields = [];
+
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!load) {
+    emptyFields.push("load");
+  }
+  if (!reps) {
+    emptyFields.push("reps");
+  }
+
+  // Check if the emptyFields array if empty (length=0) or not (length>1)
+  if (emptyFields.length > 0) {
+    // Don't go any further or even try to add the document to the database.
+    // We just gonna send an error back to the client and say which field are missing.
+    return res
+      .status(400)
+      .json({ error: "Please fill in all the fields", emptyFields });
+  }
+
   // Add a new document to the workout collection / database
   try {
     // Create a new workout document
