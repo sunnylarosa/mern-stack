@@ -11,7 +11,20 @@ import { createContext, useReducer } from "react";
 // Create the context
 export const WorkoutsContext = createContext();
 
-// Create workoutsReducer function that will revoke
+// Create workoutsReducer function that will invoke when the dispath() function called.
+//   - First argument (state), indicate the previous state before we're making any changes.
+//   - Second argument (action), indicate the objetc that we passed into the dispatch() function.
+export const workoutsReducer = (state, action) => {
+  // Check the action type
+  switch (action.type) {
+    case "SET_WORKOUTS":
+      return { workouts: action.payload };
+    case "CREATE_WORKOUTS":
+      return { workouts: [action.payload, ...state.workouts] };
+    default:
+      return state;
+  }
+};
 
 // Provide the context to our application component tree so that our components can access it.
 //   - { children } property represents whatever components or template that the 'WorkoutsContextProvider' context wraps. In this case, then the children is the App component.
