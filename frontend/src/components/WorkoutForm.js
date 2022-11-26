@@ -13,6 +13,7 @@ const WorkoutForm = () => {
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
   const [error, setError] = useState(null);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   // Function
   const handleSubmit = async (e) => {
@@ -37,7 +38,9 @@ const WorkoutForm = () => {
     // Check if the 'response' is ok or not (error)
     if (!response.ok) {
       // True, the response is not ok -> update the state of error and show error property
-      setError(json.error);
+      // Beside the error message, we also have an array of empty fields property being send back stored in json. So, we're gonna tackle it with useState emptyFields
+      setError(json.error); // this is for error message
+      setEmptyFields(json.emptyFields); // this is for an array of empty fields
     }
 
     // The response is ok
@@ -49,6 +52,9 @@ const WorkoutForm = () => {
 
       // formsetError null in case there was one previously
       setError(null);
+
+      // reset setEmptyFields to empty array
+      setEmptyFields([]);
 
       // And console log some message and output the 'json'.
       console.log("New workout added", json);
