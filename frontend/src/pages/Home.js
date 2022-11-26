@@ -36,7 +36,7 @@ const Home = () => {
 
     // Call the function
     fetchWorkouts();
-  }, []);
+  }, [dispatch]);
 
   return (
     // Cycle through each of workouts that stored inside "workouts" from useState
