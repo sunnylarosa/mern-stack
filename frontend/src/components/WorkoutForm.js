@@ -1,7 +1,13 @@
 // Import
 import { useState } from "react";
 
+// Import context
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
 const WorkoutForm = () => {
+  // We only gonna use dispatch() function here. So, just destructure the dispatch().
+  const { dispatch } = useWorkoutsContext();
+
   // These states going to update the state of correspond input field
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
@@ -46,6 +52,9 @@ const WorkoutForm = () => {
 
       // And console log some message and output the 'json'.
       console.log("New workout added", json);
+
+      // Update / display the new object in home page using dispatch() function.
+      dispatch({ type: "CREATE_WORKOUTS", payload: json });
     }
   };
 
