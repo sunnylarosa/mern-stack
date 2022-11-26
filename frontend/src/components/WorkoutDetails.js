@@ -45,7 +45,9 @@ const WorkoutDetails = ({ workout }) => {
       <p>{workout.createdAt}</p>
 
       {/* Delete button */}
-      <span onClick={handleClick}>Delete</span>
+      <span className="material-symbols-outlined" onClick={handleClick}>
+        Delete
+      </span>
     </div>
   );
 };
