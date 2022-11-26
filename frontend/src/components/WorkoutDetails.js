@@ -1,5 +1,11 @@
+// Import context
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+
 // Destructure from the props
 const WorkoutDetails = ({ workout }) => {
+  // Destructure dispatch() function.
+  const { dispatch } = useWorkoutsContext();
+
   const handleClick = async () => {
     const response = await fetch(`/api/workouts/${workout._id}`, {
       method: "DELETE",
@@ -13,6 +19,7 @@ const WorkoutDetails = ({ workout }) => {
     // Check if the response is ok. Because if it's not ok, then we don't want then to start deleting things from our global context state.
     if (response.ok) {
       // Calling dispatch function from WorkoutsContext
+      dispatch({ type: "DELETE_WORKOUT", payload: json });
     }
   };
 
