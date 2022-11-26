@@ -22,6 +22,12 @@ export const workoutsReducer = (state, action) => {
       return { workouts: action.payload };
     case "CREATE_WORKOUTS":
       return { workouts: [action.payload, ...state.workouts] };
+    case "DELETE_WORKOUT":
+      return {
+        // First before overwrite to 'state', filter through the current workouts on the current state.
+        // So we fire function to each workout (w), and we return true if we want that workout to remain in the new array, and return false if we want to take it out.
+        workouts: state.workouts.filter((w) => w._id !== action.payload._id),
+      };
     default:
       return state;
   }
