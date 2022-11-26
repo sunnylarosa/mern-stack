@@ -39,7 +39,8 @@ export const WorkoutsContextProvider = ({ children }) => {
   // Return a template, which is our workout context (WorkoutsContext) + .Provider
   return (
     // Whatever parts in this wrap will have access to the context. In this case, we need to wrap the whole application.
-    <WorkoutsContext.Provider>
+    // In order to globalize the changes that happen when we're adding a new workout, we need to provide the state and dispatch() function in the context provider with .
+    <WorkoutsContext.Provider value={{ ...state, dispatch }}>
       {/* All components that have access to this global context */}
       {children}
     </WorkoutsContext.Provider>
